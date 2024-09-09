@@ -65,3 +65,15 @@ while True:
     if not(choice=='y' or choice =='Y'):
         break
 print("Thank you for banking with us!")
+
+print("-------------Example 4: for loop as a counter---------")
+
+
+for n in range(-5,3,2):
+    print(f"counting = {n}")
+
+print("-------Example 5: for loop in a list------------")
+colors = ['magneta', 'babyblue', 'olive']
+
+for c in colors:
+    print(f"color = {c}")
