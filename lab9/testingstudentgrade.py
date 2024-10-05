@@ -49,12 +49,25 @@ class TestMainFunction(unittest.TestCase):
 
     #test for invalid value of grades
 
-    
+    @patch('builtins.input', side_effect=['Peter', '2', '85', '90'])
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_invalid_number_of_students(self, mock_stdout, mock_input):
+        studentgrade.main()
 
+        output = mock_stdout.getvalue()
 
+        self.assertIn("Invalid Input. Try again.", output)
+        self.assertIn("The class average is 87.50", output)
 
+    @patch('builtins.input', side_effect=['2', '85', 'Peter', '90'])
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_invalid_grade_input(self, mock_stdout, mock_input):
+        studentgrade.main()
 
+        output = mock_stdout.getvalue()
 
+        self.assertIn("Invalid Input. Try again.", output)
+        self.assertIn("The class average is 87.50", output)
 
 if __name__ == "__main__":
     unittest.main()
