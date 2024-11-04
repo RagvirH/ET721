@@ -8,4 +8,7 @@ urlpatterns =[
 
     #add new task inot the list
     path('add', views.addTodoItem, name='add'),
+
+    #mark a task as copmleted
+    path('copmleted/<todo_id>', views.completedTodo, name = 'completed'),
 ]
