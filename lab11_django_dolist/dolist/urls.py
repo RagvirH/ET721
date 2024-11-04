@@ -4,5 +4,8 @@ from . import views
 
 urlpatterns =[
     #load page of the app will be sent to 'index.html' file
-    path("", views.index, name='index')
+    path("", views.index, name='index'),
+
+    #add new task inot the list
+    path('add', views.addTodoItem, name='add'),
 ]
