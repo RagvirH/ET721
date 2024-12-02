@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1 class="apptitle">Upload images app</h1>
-    <form class="form_post">
+    <form method="post" enctype="multipart/form-data" class="form_post">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btnsubmit" type="submit">Submit new photo request</button>
