@@ -9,23 +9,23 @@
 </head>
 <body>
     <main class="maincontainer">
-        <h1 class="apptitle">To do list by Ragvir Hothi</h1>
-        <form class="dolistform" action="{%url 'add'%}" method="post" role="form">
-            {% csrf_token%}
+        <h1 class="apptitle">To Do List by Ragvir Hothi</h1>
+        <form class="dolistform" action="{% url 'add' %}" method="post" role="form">
+            {% csrf_token %}
             <section class="formgroup">
                 <label for="task">What to do?....</label>
-                <input type="text" id="task" class="todo_text" placeholder="type your task...">
-                {{form.text}}
-                <button class="btnadd" >ADD TO LIST</button>
+                <!-- Ensure the name attribute matches what your view is expecting -->
+                <input type="text" id="task" name="text" class="todo_text" placeholder="Type your task..." required>
+                <button type="submit" class="btnadd">ADD TO LIST</button>
             </section>
         </form>
-            <section class="formgroup">
-                <button class="btn_deleteeach"> Completed</button>
-                <button class="btn_deleteall">DELETE ALL</button>
-            </section>
-            <section class="formgroup">
-                <h3>Added to list</h3>
-                <ul class="listdo">
+        <section class="formgroup">
+            <button class="btn_deleteeach">Completed</button>
+            <button class="btn_deleteall">DELETE ALL</button>
+        </section>
+        <section class="formgroup">
+            <h3>Added to list</h3>
+            <ul class="listdo">
                 {% for task in todo_tasks %}
                     <li class="listitem {% if task.completed %}completed{% endif %}">
                         {{ task.text }}
@@ -38,8 +38,7 @@
                     <p>No tasks added yet.</p>
                 {% endfor %}
             </ul>
-            </section> 
+        </section> 
     </main>
-    
 </body>
 </html>
