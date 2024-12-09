@@ -25,20 +25,19 @@
             </section>
             <section class="formgroup">
                 <h3>Added to list</h3>
+                <ul class="listdo">
                 {% for task in todo_tasks %}
-                    <ul class="listdo">
-                    {% if task.completed %}
-                        <li class="listitem {% if task.completed %}completed{% endif %}">
-                            {{ task.text }}
-                            {% if not task.completed %} 
-                                <a href="{% url 'complete_task' task.id %}" class="btn_complete">Mark Complete</a>
-                            {% endif %}
-                            <a href="{% url 'delete_task' task.id %}" class="btn_delete">Delete</a>
-                        </li>
-                    {% empty %}
-                        <p>No tasks added yet.</p>
-                    {% endfor %}
-                    </ul>
+                    <li class="listitem {% if task.completed %}completed{% endif %}">
+                        {{ task.text }}
+                        {% if not task.completed %}
+                            <a href="{% url 'complete_task' task.id %}" class="btn_complete">Mark Complete</a>
+                        {% endif %}
+                        <a href="{% url 'delete_task' task.id %}" class="btn_delete">Delete</a>
+                    </li>
+                {% empty %}
+                    <p>No tasks added yet.</p>
+                {% endfor %}
+            </ul>
             </section> 
     </main>
     

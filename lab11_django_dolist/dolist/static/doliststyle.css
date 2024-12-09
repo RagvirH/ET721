@@ -23,7 +23,7 @@
     width: 400px;
   }
   .btnadd{background-color: olive;}
-  .btnadd, .btn_deleteall, .btn_deleteeach{
+  .btn_deleteall, .btn_deleteeach{
       background-color: crimson;
       border: none;
       padding: 0.5em 2em;
