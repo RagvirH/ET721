@@ -20,7 +20,7 @@ class TodoViewsTestCase(TestCase):
 
         #check if all tasks are included in the context
         self.assertQuerySetEqual(
-            response.content['todo_task'],
+            response.context['todo_tasks'],
             TodoList.objects.order_by('id'),
             transform=lambda x:x,
         )
@@ -36,8 +36,8 @@ class TodoViewsTestCase(TestCase):
         self.assertTrue(TodoList.objects.filter(text="Task 3").exists())
 
     #test marking a valid todo item as completed
-    def task_completed_todo_valid(self):
-        response = self.client.post(reverse(completedTodo), args =[self.task1.id])
+    def test_completed_todo_valid(self):
+        response = self.client.post(reverse(completedTodo, args =[self.task1.id]))
         self.assertEqual(response.status_code, 302)
         self.task1.refresh_from_db()
         self.assertTrue(self.task1.completed)

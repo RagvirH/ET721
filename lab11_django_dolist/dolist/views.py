@@ -5,7 +5,8 @@ from django.views.decorators.http import require_POST
 
 def index(request):
     todo_tasks = TodoList.objects.order_by('id')  # Changed from Todolist to TodoList
-    context = {'todo_tasks': todo_tasks}
+    form = TodoListForm()
+    context = {'todo_tasks': todo_tasks, 'form':form}
     return render(request, 'index.html', context)
 
 def add_task(request):
